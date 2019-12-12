@@ -147,9 +147,9 @@ clear i j signal noise patcher part;
 % First
 figure('Name','Calculate SNR using matrix','NumberTitle','off');
 PresentInfo('SNR of patches for each RGB chanel using matrix', ...
-    SNRm, coche, true);
+    SNRm, coche, true, true);
 
 % Second
 figure('Name','Calculate SNR using vector','NumberTitle','off');
 PresentInfo('SNR of patches for each RGB chanel using vector', ...
-    SNRv, coche, false);
+    SNRv, coche, false, true);

@@ -1,12 +1,18 @@
-function PresentInfo(head, data, coche, chose)
+function PresentInfo(head, data, coche, chose, unit)
 % Презентація інформації на графіку
 % head - заголовок
 % data - дані SNR
 % coche - інформація про "латки" patches
 % chose - вибір відображення графіків, true - всі разом, false - окремо
+% unit - вибір розмірності true - в дБ, false - звичайні відносні одиниці
 
 % Name of chanels
 RGB = ['R', 'G', 'B'];
+
+% change unit
+if unit
+    data = 10 * log10(data);
+end
 
 % chose present information
 if chose
@@ -27,7 +33,11 @@ if chose
 
     title(head);
     xlabel('Patches of ColorChecker');
-    ylabel('SNR');
+    if unit
+        ylabel('SNR [dB]');
+    else
+        ylabel('SNR');
+    end
 
     legend('show');
 else
@@ -48,7 +58,11 @@ else
 
         title([head, ': chanel ', RGB(i)]);
         xlabel('Patches of ColorChecker');
-        ylabel('SNR');
+        if unit
+            ylabel('SNR [dB]');
+        else
+            ylabel('SNR');
+        end
     end
     
     % help information
